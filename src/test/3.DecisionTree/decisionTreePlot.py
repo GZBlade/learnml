@@ -17,7 +17,7 @@ arrow_args = dict(arrowstyle="<-")
 
 def getNumLeafs(myTree):
     numLeafs = 0
-    firstStr = myTree.keys()[0]
+    firstStr = list(myTree.keys())[0]
     secondDict = myTree[firstStr]
     # 根节点开始遍历
     for key in secondDict.keys():
@@ -31,7 +31,7 @@ def getNumLeafs(myTree):
 
 def getTreeDepth(myTree):
     maxDepth = 0
-    firstStr = myTree.keys()[0]
+    firstStr = list(myTree.keys())[0]
     secondDict = myTree[firstStr]
     # 根节点开始遍历
     for key in secondDict.keys():
@@ -68,7 +68,7 @@ def plotTree(myTree, parentPt, nodeTxt):
     # 并打印输入对应的文字
     plotMidText(cntrPt, parentPt, nodeTxt)
 
-    firstStr = myTree.keys()[0]
+    firstStr = list(myTree.keys())[0]
     # 可视化Node分支点
     plotNode(firstStr, cntrPt, parentPt, decisionNode)
     # 根节点的值
@@ -87,7 +87,7 @@ def plotTree(myTree, parentPt, nodeTxt):
             plotNode(secondDict[key], (plotTree.xOff, plotTree.yOff), cntrPt, leafNode)
             # 并打印输入对应的文字
             plotMidText((plotTree.xOff, plotTree.yOff), cntrPt, str(key))
-    # plotTree.yOff = plotTree.yOff + 1.0/plotTree.totalD
+    plotTree.yOff = plotTree.yOff + 1.0/plotTree.totalD
 
 
 def createPlot(inTree):

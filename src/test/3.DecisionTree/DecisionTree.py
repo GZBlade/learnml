@@ -125,7 +125,7 @@ def chooseBestFeatureToSplit(dataSet):
             newEntropy += prob * calcShannonEnt(subDataSet)
         # gain[信息增益]: 划分数据集前后的信息变化， 获取信息熵最大的值
         infoGain = baseEntropy - newEntropy
-        print 'infoGain=', infoGain, 'bestFeature=', i, baseEntropy, newEntropy
+        print('infoGain=', infoGain, 'bestFeature=', i, baseEntropy, newEntropy)
         if (infoGain > bestInfoGain):
             bestInfoGain = infoGain
             bestFeature = i
@@ -191,7 +191,7 @@ def classify(inputTree, featLabels, testVec):
         classLabel 分类的结果值，需要映射label才能知道名称
     """
     # 获取tree的根节点对于的key值
-    firstStr = inputTree.keys()[0]
+    firstStr = list(inputTree.keys())[0]
     # 通过key得到根节点对应的value
     secondDict = inputTree[firstStr]
     # 判断根节点名称获取根节点在label中的先后顺序，这样就知道输入的testVec怎么开始对照树来做分类
@@ -199,7 +199,7 @@ def classify(inputTree, featLabels, testVec):
     # 测试数据，找到根节点对应的label位置，也就知道从输入的数据的第几位来开始分类
     key = testVec[featIndex]
     valueOfFeat = secondDict[key]
-    print '+++', firstStr, 'xxx', secondDict, '---', key, '>>>', valueOfFeat
+    print('+++', firstStr, 'xxx', secondDict, '---', key, '>>>', valueOfFeat)
     # 判断分枝是否结束: 判断valueOfFeat是否是dict类型
     if isinstance(valueOfFeat, dict):
         classLabel = classify(valueOfFeat, featLabels, testVec)
@@ -239,7 +239,7 @@ if __name__ == "__main__":
 
     import copy
     myTree = createTree(myDat, copy.deepcopy(labels))
-    print myTree
+    print(myTree)
     # [1, 1]表示要取的分支上的节点位置，对应的结果值
     # print classify(myTree, labels, [1, 1])
 
